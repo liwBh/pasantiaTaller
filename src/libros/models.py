@@ -10,18 +10,19 @@ class Autor(models.Model):
 class Libro(models.Model):
     CATEGORIAS = (
         (0, "Sin definir"),
-        (2, "Romance"),
-        (3, "Acción"),
-        (4, "Terror"),
+        (1, "Romance"),
+        (2, "Acción"),
+        (3, "Terror"),
         (4, "Comedia"),
     )
     nombre = models.CharField(max_length=50, verbose_name="Nombre")
     autor = models.ForeignKey(Autor, on_delete=CASCADE, verbose_name="Autor")
-    fecha_publicacion = models.DateField(auto_now=True, verbose_name="Fecha Publicación")
+    fecha_publicacion = models.DateField(verbose_name="Fecha Publicación")
     categoria = models.SmallIntegerField(choices=CATEGORIAS, default=0, verbose_name="Categoría")
+    fecha_actualizacion = models.DateField(auto_now=True, verbose_name="Fecha Actualizción")
 
     def __str__(self):
-        return "%s - %s" % (self.nombre, self.autor.nombre)
+        return "%s, %s, %s, %s, %s" % (self.nombre, self.autor.nombre, self.autor.apellidos, self.fecha_actualizacion, self.categoria)
 
 #! Notas
 '''

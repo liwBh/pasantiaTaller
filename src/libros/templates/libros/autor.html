@@ -1,0 +1,55 @@
+{% extends "../_base.html" %}
+{% load static %}
+
+{% block content %}
+    <h2 class="p-2 text-secondary">Autores</h2>
+
+    <div class="row justify-content-center align-items-center mt-3">
+        <div class="col-12 col-md-6">
+
+            <form method="post">
+                <h4 class="text-success">Nuevo autor</h4>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.nombre.id_for_label }}" class="form-label"> {{ form.nombre.label }} </label>
+                    {{ form.nombre }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.apellidos.id_for_label }}"
+                           class="form-label"> {{ form.apellidos.label }} </label>
+                    {{ form.apellidos }}
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-50">Enviar</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <h4 class="text-primary">Listado de autores</h4>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ autor.nombre }}</td>
+                        <td>{{ autor.apellidos }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
