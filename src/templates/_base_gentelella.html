@@ -1,0 +1,35 @@
+
+{# cargar base de gentelella widgets#}
+{% extends 'gentelella/base.html' %}
+
+{# cargar archivos estaticos #}
+{% load static %}
+
+{# titulo de pagina #}
+{% block title %} Libros {% endblock %}
+
+{# codigo propio de css #}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'libros/css/estilos.css' %}">
+{% endblock %}
+
+{# contenido principal #}
+{% block content_block_wrap %}
+    <div class="card">
+        <div class="card-body">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </div>
+
+{% endblock content_block_wrap %}
+
+
+{# codigo propio de js #}
+{% block javascript %}
+    {{ block.super }}
+    <script src="{% static 'libros/js/scripts.js' %}"></script>
+{% endblock %}
+

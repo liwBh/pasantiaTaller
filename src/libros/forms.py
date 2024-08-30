@@ -1,7 +1,30 @@
 from django import forms
+from djgentelella.forms.forms import GTForm
+from djgentelella.widgets import core as GTWidget
+
 from libros.models import Autor, Libro
 
 
+#__________________________________________________________________________________#
+# Marcela CRUD
+#__________________________________________________________________________________#
+
+class LibroForm(GTForm, forms.ModelForm):
+
+    class Meta:
+        model = Libro
+        #fields = '__all__'
+        exclude = ["fecha_actualizacion"]
+        widgets = {
+            "autor": GTWidget.Select(),
+            "nombre": GTWidget.TextInput(),
+            "categoria": GTWidget.Select(),
+            "fecha_publicacion": GTWidget.DateInput(),
+        }
+
+#__________________________________________________________________________________#
+# Kendrick CRUD
+#__________________________________________________________________________________#
 class FormularioAutor(forms.Form):
     nombre = forms.CharField(max_length=50, label="Nombre",
                              widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
@@ -18,10 +41,6 @@ class FormularioLibros(forms.Form):
                                   widget=forms.Select(attrs={'class': 'form-select'}), required=True)
     fecha_publicacion = forms.DateField(label="Fecha Publicación",
                                         widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
-
-
-from django import forms
-from .models import Libro, Autor
 
 
 class FormularioLibroModel(forms.ModelForm):

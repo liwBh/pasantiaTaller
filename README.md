@@ -7,6 +7,7 @@
 - ["Migraciones"](https://docs.djangoproject.com/es/5.0/topics/migrations/)
 - ["Redireccionar"](https://docs.djangoproject.com/en/5.1/ref/contrib/redirects/)
 - ["Mensajes"](https://docs.djangoproject.com/en/5.0/ref/contrib/messages/)
+- ["Paginación"](https://www.django-rest-framework.org/api-guide/pagination/)
 
 ## Contenido
 
